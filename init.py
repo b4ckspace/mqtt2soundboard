@@ -27,9 +27,12 @@ def on_message(client, userdata, msg):
         soundfile = "space/ALARM"
         client.publish('psa/sound', soundfile)
     elif topic == "sensor/door/frame" and payload == "open":
-        soundfile = "door-louder"
+        soundfile = "door-louder-open"
         client.publish('psa/sound', soundfile)
-    elif topic == "sensor/door/bell" and payload == "pressed":
+    elif topic == "sensor/door/frame" and payload == "closed":
+        soundfile = "door-louder-close"
+        client.publish('psa/sound', soundfile)
+    elif topic == "sensor/door/bell" closeand payload == "pressed":
         soundfile = "door-bell"
         client.publish('psa/sound', soundfile)
     print("RECEIVED: " + topic + '  ' + payload)
